@@ -2,6 +2,7 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const expressLayout = require('express-ejs-layouts');
+// require('dotenv').config();
 const port = process.env.PORT || 5000;
 //init
 const app = express();
