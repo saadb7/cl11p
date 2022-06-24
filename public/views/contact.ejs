@@ -1,0 +1,51 @@
+<link rel="stylesheet" href="css/contact.css">
+<div class="mainBox font">
+    <h1>contact us</h1>
+    <h3>We'd love to hear from you</h3>
+    <div class="form">
+        <input type="text" class="io font" id="name" placeholder="Name">
+        <input type="text" class="io font" id="email" placeholder="Email">
+        <input type="text" class="io font" id="pno" placeholder="Phone Number">
+        <textarea name="Message" class="io font" id="mess" cols="10" rows="5" placeholder="Message"></textarea>
+        <button id="btn"><span></span>
+            Submit Form
+        </button>
+    </div>
+</div>
+
+<!-- JS -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    let btn = document.getElementById('btn');
+    btn.addEventListener('click', async function (e) {
+
+        let name = document.getElementById('name').value,
+            message = document.getElementById('mess').value,
+            email = document.getElementById('email').value,
+            phone = document.getElementById('pno').value;
+
+        if (name == '' || message == '' || email == '') {
+            alert('Kindly fill the complete form');
+        }
+        else {
+            //console.log(String(email).toLowerCase().match(/^\S+@\S+\.\S+$/));
+            if (String(email).toLowerCase().match(/^\S+@\S+\.\S+$/)) {
+                let resp = await axios.post('/contact',
+                    {
+                        name, message, phone, email
+                    });
+                if (resp.data == 'Err') {
+                    alert('Error , try again !');
+                }
+                else {
+                    alert('Form Submitted');
+                }
+            }
+            else {
+                document.getElementById('email').value = '';
+                alert('Enter a valid email address');
+
+            }
+        }
+    })
+</script>

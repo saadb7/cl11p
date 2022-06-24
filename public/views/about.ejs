@@ -1,0 +1,92 @@
+<style>
+
+    .content{
+        width: 75%;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+    }
+    .content p{
+        margin-top: 40px;
+        margin-bottom: 20px;
+
+        padding: 40px;
+        font-family: 'Varela Round';
+        text-align: center;
+        font-size: clamp(1.3rem, 3vw, 1.8rem);
+
+    }
+    .content h1{
+        border-bottom: 2px solid #009688;
+
+        font-family: 'Varela Round';
+        font-size: clamp(1.4rem, 3vw, 2rem);
+    
+
+    }
+    .content ul{
+        list-style: none;
+    }
+    .content li{
+        padding: 10px;
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        font-family: 'Varela Round';
+        display: inline-block;
+
+    }
+
+    @media only screen and (min-width:650px) and (max-width: 810px){
+        body::before{
+            content: '';
+            position: absolute;
+            height: 900px;
+            width: 100%;
+            z-index: -1;
+            background-color: #34302d;
+        }
+
+    }
+    @media only screen and (max-width: 650px){
+        #navbar{
+            padding: 20px 25px;
+            padding-bottom: 0px;
+
+
+        }
+        .content {
+            width: 98%;
+            margin: 0px;
+            
+
+        }
+        .content p{
+            padding: 5px;
+
+            margin: 20px;
+
+        }
+
+        body::before{
+            content: '';
+            position: absolute;
+            height: 1100px;
+            max-height: 140vh;
+            width: 100%;
+            z-index: -1;
+            background-color: #34302d;
+        }
+    }
+</style>
+<div class="content">
+    <p >Use this website to shorten URLs, share content accross multiple platforms or with multiple peoples or just as an online clipboard </p>
+    <h1>Steps to follow</h1>
+    <ul>
+        <li>Upon landing on the home page , enter the name you want to use as a shorthand in the text box. Follow up by clicking the Go Button.</li>
+        <li>This will redirect the user to the '/${shorthand}' page. Enter the text that you want to CL!!P in the text area (Use password if neccessary). Follow this by clicking on the update button.</li>
+        <li>You can comeback anytime to access the content that you have stored at your shorthand link. You can further update or delete the content by using their respective buttons and use the previously set password if any.</li>
+        <li>Repeat</li>
+    </ul>
+</div>

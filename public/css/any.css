@@ -1,0 +1,135 @@
+.content {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-25%);
+    margin: 0px auto;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+}
+
+textarea {
+    white-space: normal;
+    outline: none;
+    padding: 10px;
+    width: 70%;
+    font-size: 16px;
+    height: 50vh;
+}
+
+.btns {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+
+}
+
+.btns button,
+input {
+    font-family: 'Varela Round', sans-serif;
+}
+
+.pass {
+    width: 30%;
+    background: transparent;
+    position: relative;
+    padding: 10px;
+    font-size: 1.5rem;
+    font-family: 'Varela Round', sans-serif;
+    outline: none;
+    color: rgb(52, 48, 44);
+    color: #009688;
+    color: white;
+    border: none;
+    border-bottom: 2px solid white;
+    transition: 0.5s;
+}
+
+.pass:focus,
+.pass:hover {
+    border-bottom: 2px solid #009688;
+}
+
+.btn {
+    padding: 10px;
+
+    color: white;
+    text-align: center;
+    border: none;
+    font-size: 1.65rem;
+    border-radius: 8px;
+    background-color: transparent;
+    cursor: pointer;
+    transition: 0.5s;
+    margin-left: 30px;
+    min-width: 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn span {
+    z-index: -1;
+    background-color: #009688;
+    height: 100%;
+    width: 0%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transition: 0.5s;
+
+
+}
+
+.btn:hover span {
+    width: 100%;
+}
+
+.btn:hover {
+    border: none;
+
+}
+/* body::before{
+    content: '';
+    position: absolute;
+    height: 10px;
+    width: 100%;
+    z-index: -1;
+    background-color: #34302d;
+} */
+
+@media only screen and (max-width: 860px){
+    textarea{
+        height: 40vh;
+    }
+}
+@media only screen and (max-width : 470px) {
+    textarea {
+        height: clamp(20vh , 60vw , 30vh);
+    }
+    .content {
+        top: 60%;
+    }
+}
+/* @media only screen and (max-height: 900) and (min-width: 400) {
+    .content{
+        top: 50%;
+    }
+
+} */
+@media only screen and (max-width : 920px){
+    body::before{
+        content: '';
+        position: absolute;
+        height: 1300px;
+        width: 100%;
+        max-height: 130vh;
+        z-index: -1;
+        background-color: #34302d;
+    }
+}

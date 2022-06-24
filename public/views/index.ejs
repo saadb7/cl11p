@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="css/index.css">
+<div class="content">
+    <div class="typewriter">
+        <h1>Welcome to CL!!P</h1>
+    </div>
+    <div class="form">
+        <input type="text" placeholder="Enter link here" id="link"> 
+
+        <button id="btn"><span></span> Go</button>
+        
+    </div>
+</div>
+<!-- <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> -->
+<script>
+    
+    let btn = document.getElementById('btn');
+    btn.addEventListener('click' ,  function(e){
+
+        e.preventDefault();
+        let link = document.getElementById('link').value;
+        window.location = `/${link}`;
+        
+    });
+</script>
+

@@ -1,0 +1,32 @@
+<style>
+h1{
+    margin-top: 50px;
+    display: block;
+    text-align: center;
+
+    font-family: 'Varela Round' , cursive;
+    font-size: 3rem;
+}
+.rev{
+    display: block;
+    margin: auto;
+    width: 60vw;
+    list-style: none;
+
+
+}
+.rev li{
+    text-align: center;
+    font-family: 'Varela Round' , cursive;
+    
+
+}
+</style>
+
+<h1>reviews</h1>
+<ul class="rev">
+    <% for(var i = 0 ; i < content.length ; i++) {%>
+       <li><%= content[i]['name']%> says <%=content[i]['message']%></li>
+    <% } %>
+</ul>
+    

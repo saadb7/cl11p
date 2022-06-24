@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= name %>
+    </title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <link href="http://fonts.cdnfonts.com/css/modern-typewriter" rel="stylesheet">
+    <link rel="stylesheet" href="css/layout.css">
+    <style>
+        .wrapper::before {
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            content: "";
+            background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('img/bg.jpeg');
+            width: 100%;
+            
+            background-position: center;
+            background-size: cover;
+            height: 100%;
+            z-index: -1;
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <div id="navbar">
+                <a href="/">
+                    <img src="img/logo.png" alt="logo" class="logo">
+                </a>
+                <ul class="navigation">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">Guide</a></li>
+                    <li><a href="/contact">Contact Us</a></li>
+                    <% if (username){%>
+                        <li><a href="/"><%= username %></a></li>
+                        <li><a href="/logout">Log Out</a></li>
+
+                    <%} else { %>
+                        <li><a href="/signup">Sign Up</a></li>
+                        <li><a href="/login">Login</a></li>
+                        <%} 
+                    %>
+                </ul>
+            </div>
+        </header>
+        <%- body %>
+    </div>
+
+</body>
+
+</html>

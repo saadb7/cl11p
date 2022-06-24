@@ -1,0 +1,142 @@
+<style>
+    .mainBox {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: auto;
+        max-width: 80vw;
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    .mainBox h1 {
+        font-size: 3rem;
+        text-align: center;
+    }
+
+    .form {
+        min-width: 30%;
+        margin-top: 25px;
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .font {
+        font-family: 'Varela Round', cursive;
+    }
+
+    .io {
+        font-size: 0.9rem;
+        outline: none;
+        background: transparent;
+        padding: 10px;
+        font-family: 'Varela Round', cursive;
+        color: white;
+        border: none;
+        border-bottom: 2px solid white;
+        transition: 0.5s;
+        margin: 10px 10px;
+
+
+
+    }
+
+    .io:focus,
+    .io:hover {
+        outline: none;
+        border-bottom: 2px solid #009688;
+    }
+
+    #btn {
+        font-family: 'Varela Round', cursive;
+        font-size: 1.2em;
+        padding: 10px;
+        grid-area: btn;
+        margin: auto;
+        color: white;
+        text-align: center;
+        border: none;
+        border-radius: 8px;
+        background-color: transparent;
+        cursor: pointer;
+        transition: 0.5s;
+        position: relative;
+
+    }
+
+    #btn span {
+        border-radius: 8px;
+        z-index: -1;
+        background-color: #009688;
+        height: 100%;
+        width: 0%;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        transition: 0.5s;
+
+    }
+
+    #btn:hover span {
+        width: 100%;
+    }
+
+    #btn:hover {
+        border: none;
+
+    }
+</style>
+<div class="mainBox">
+    <h1 class="font">sign up</h1>
+    <div class="form">
+        <input type="text" class="io font" placeholder="Enter your name" id="name">
+        <input type="text" class="io font" placeholder="Enter your email address" id="email">
+        <input type="text" class="io font" placeholder="Enter your username" id="username">
+        <input type="password" class="io font" placeholder="Enter your password" id="password">
+        <input type="password" class="io font" placeholder="Re-enter password" id="cpassword">
+        <button id="btn">
+            <span></span>Register Now
+        </button>
+    </div>
+</div>
+
+<!-- JS -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+
+    let btn = document.getElementById('btn');
+    btn.addEventListener('click', async function (e) {
+        let email = document.getElementById('email').value;
+        let name = document.getElementById('name').value;
+        let password = document.getElementById('password').value;
+        let cpassword = document.getElementById('cpassword').value;
+        let username = document.getElementById('username').value;
+        if (username == '' || email == '' || password == ''
+            || cpassword == '' || name == '') {
+            alert('Enter complete details');
+        }
+        else if (cpassword != password){
+            alert('Password mismatch');
+        }
+        else {
+            if (String(email).toLowerCase().match(/^\S+@\S+\.\S+$/)){
+                let resp = await axios.post('/signup' , {
+                    name , password , email , username
+                });
+                if (resp.data != 'User Created , Kindly Login'){
+                    if (resp.data.includes('email')){
+                        alert('Email address already used');
+                    }
+                    else alert('Username already used');
+                }
+                else {
+                    alert('User Created , Kindly Login');
+                }
+            }
+            else {
+                alert('Enter a valid email address');
+            }
+        }
+    });
+</script>
