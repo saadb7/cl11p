@@ -113,6 +113,21 @@
     }
 
 }
+.socials{
+    margin-top: 10px;
+}
+.links img{
+    margin: 4px 4px;
+}
+.links{
+    display: flex;
+    padding: 3px;
+    align-items: center;
+    justify-content: center;
+}
+.git{
+    filter: invert(1);
+}
 /* @media only screen and (max-width : 500px){
     body::before{
         content: '';
