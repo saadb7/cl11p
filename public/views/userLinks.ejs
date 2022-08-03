@@ -1,0 +1,69 @@
+<style>
+    .content{
+        color: white;
+        margin: auto;
+        margin-top: 30px;
+        width: 75%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+    }
+    
+    .content p{
+        font-family: 'Varela Round';
+        text-align: center;
+        font-size: 3em;
+
+    }
+    .content li{
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        font-family: 'Varela Round';
+    }
+    .content a{
+        color: white;
+        text-decoration: none;
+        border-bottom: 2px solid white;
+        transition: 0.5s;
+    }
+    .content a:hover{
+        border-bottom: 2px solid #009688;
+    }
+
+    @media only screen and (max-width: 650px) {
+        #navbar {
+            padding: 20px 25px;
+            padding-bottom: 0px;
+        }
+        .content {
+            width: 98%;
+            margin: 0px;
+        }
+        .content p {
+            padding: 5px;
+            margin: 20px;
+        }
+    }
+    @media only screen and (min-width:650px) and (max-width: 810px){
+        body::before{
+            content: '';
+            position: absolute;
+            height: 900px;
+            width: 100%;
+            z-index: -1;
+            background-color: #34302d;
+        }
+
+    }
+</style>
+<div class="content">
+    <p>links updated by <%=username%></p>
+    <ul>
+        <% for(var i=0 ; i < content.length ; i++) {%>
+            <li><a href="../<%=content[i]%>" target="_blank">
+                    <%=content[i]%>
+                </a></li>
+            <% } %>
+    </ul>
+</div>

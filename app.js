@@ -15,6 +15,8 @@ app.use(cookieParser());
 app.use('public' , express.static('public'));
 app.use('/css' , express.static('public/css'));
 app.use('/img' , express.static('public/views/img'));
+app.use('/user/css' , express.static('public/css'));
+app.use('/user/img' , express.static('public/views/img'));
 
 
 //setting the template engine

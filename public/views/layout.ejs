@@ -8,6 +8,7 @@
     <title>
         <%= name %>
     </title>
+    <link rel="icon" type="image/x-icon" href="/img/logo_inverted.png">
     <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@1,600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/modern-typewriter" rel="stylesheet">
@@ -20,6 +21,7 @@
 
             content: "";
             background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('img/bg.jpeg');
+            
             width: 100%;
             
             background-position: center;
@@ -44,7 +46,7 @@
                     <li><a href="/about">Guide</a></li>
                     <li><a href="/contact">Contact Us</a></li>
                     <% if (username){%>
-                        <li><a href="/"><%= username %></a></li>
+                        <li><a href="/user/<%=username%>"><%= username %></a></li>
                         <li><a href="/logout">Log Out</a></li>
 
                     <%} else { %>

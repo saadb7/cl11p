@@ -20,7 +20,11 @@ const pageSchema = new mongoose.Schema({
     password : {
         type : String ,
         default : ''
-    }  
+    },
+    username: {
+        type: String, 
+        default: ''
+    } 
 });
 
 

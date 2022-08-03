@@ -43,8 +43,11 @@ module.exports.updatePage = async function updatePage(req, res) {
         let page = await pageModel.findOne({ pageId: link });
         if (page) {
             if (req.body.pass == page.password) {
-                let updated = await pageModel.findByIdAndUpdate(page.id, { pageContent: req.body.content });
+                let updated = await pageModel.findByIdAndUpdate(page.id, { pageContent: req.body.content , 
+                userName : req.cookies.username});
                 // console.log('updated ', updated);
+                // console.log(req.cookies.username);
+                
             }
             else {
                 // console.log(page.password);
@@ -55,7 +58,8 @@ module.exports.updatePage = async function updatePage(req, res) {
             let created = await pageModel.create({
                 pageId: link,
                 pageContent: req.body.content,
-                password: req.body.pass
+                password: req.body.pass,
+                username : req.cookies.username
             });
 
         }

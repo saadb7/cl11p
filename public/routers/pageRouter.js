@@ -3,7 +3,7 @@ const pageRouter = express.Router();
 
 const {getHome , goToLink , fetchPage , updatePage , delPage , addReview} = require('../controller/pageController');
 
-const {createUser , loginUser , logoutUser , checkAdmin , getReviews} = require ('../controller/userController');
+const {createUser , loginUser , logoutUser , checkAdmin , getReviews ,showAllPages , checkLogin} = require ('../controller/userController');
 
 pageRouter.route('/contact').get(function (req , res){
     let currUser = req.cookies.username;
@@ -55,5 +55,7 @@ pageRouter.route('/:id')
 .patch(updatePage)
 .delete(delPage);
 
+pageRouter.route('/user/:user')
+.get(checkLogin,showAllPages);
 module.exports = pageRouter;
 

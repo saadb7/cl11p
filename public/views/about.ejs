@@ -69,19 +69,41 @@
 
         }
 
-        body::before{
-            content: '';
-            position: absolute;
-            height: 1100px;
-            max-height: 140vh;
-            width: 100%;
-            z-index: -1;
-            background-color: #34302d;
-        }
+        
     }
+    .alert {
+        font-family: 'Varela Round' , cursive;
+        padding: 20px;
+        background-color: #009688; /* Red */
+        color: white;
+        margin-bottom: 15px;
+        transition: 0.3s;
+      }
+    .alert:hover{
+        background-color: transparent;
+    }
+      
+      /* The close button */
+      .closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      
+      /* When moving the mouse over the close button */
+      .closebtn:hover {
+        color: #009688;
+      }
 </style>
 <div class="content">
-    <p >Use this website to shorten URLs, share content accross multiple platforms or with multiple people or just as an online clipboard </p>
+    <!-- <p >Use this website to shorten URLs, share content accross multiple platforms or with multiple people or just as an online clipboard </p> -->
+    <p>
+    Instantly share text content through user-generated links across multiple platforms. Can be used to shorten URL's or as an online clipboard.</p>
     <h1>Steps to follow</h1>
     <ul>
         <li>Upon landing on the home page , enter the name you want to use as a shorthand in the text box. Follow up by clicking the Go Button.</li>
@@ -89,4 +111,8 @@
         <li>You can comeback anytime to access the content that you have stored at your shorthand link. You can further update or delete the content by using their respective buttons and use the previously set password if any.</li>
         <li>Repeat</li>
     </ul>
+    <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        The resgistered users can now see all their updated posts by clicking on the username in the navbar.
+      </div>
 </div>

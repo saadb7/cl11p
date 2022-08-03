@@ -3,6 +3,7 @@ const reviewModel = require('../models/reviewModel');
 const jwt = require('jsonwebtoken');
 const JWT_KEY = 'mykey123';
 const bcrypt = require('bcrypt');
+const pageModel = require('../models/pageModel');
 
 
 module.exports.createUser = async function createUser (req , res){
@@ -68,9 +69,9 @@ module.exports.checkAdmin = async function checkAdmin(req , res , next){
         if (currUser.role == 'admin')
             next();
         else {
-            res.render ('error.ejs' , {
+            return res.render ('error.ejs' , {
                 name : "Error" , 
-                err : '403' , 
+                err : 'Error 403' , 
                 username : req.cookies.username , 
                 msg : "Access Denied"
             });
@@ -79,7 +80,7 @@ module.exports.checkAdmin = async function checkAdmin(req , res , next){
     else {
         return res.render('error.ejs' , {
             name : 'Error' , 
-            err : '401' , 
+            err : 'Error 401' , 
             username : '' , 
             msg : "Login to see content"
         })
@@ -87,10 +88,62 @@ module.exports.checkAdmin = async function checkAdmin(req , res , next){
 };
 module.exports.getReviews = async function getReviews(req , res){
     let reviews = await reviewModel.find();
-    console.log(reviews);
+    // console.log(reviews);
     return res.render('reviews.ejs' , {
         name : 'Reviews' , 
         username : req.cookies.username , 
         content : reviews
     });
+};
+
+
+module.exports.checkLogin = async function checkLogin(req , res , next){
+    if (req.cookies.login){
+        let currPayload = jwt.verify(req.cookies.login , JWT_KEY).payload;
+        let currUser = await userModel.findById(currPayload);
+        if (req.cookies.username == req.params.user)
+            next();
+        else {
+            return res.render ('error.ejs' , {
+                name : "Error" , 
+                err : 'Error 403' , 
+                username : req.cookies.username , 
+                msg : "Access Denied"
+            });
+        }
+    }
+    else {
+        return res.render('error.ejs' , {
+            name : 'Error' , 
+            err : 'Error 401' , 
+            username : '' , 
+            msg : "Login to see content"
+        })
+    }
+};
+module.exports.showAllPages = async function showAllPages(req , res){
+    try{
+        let allPages = await pageModel.find({username : req.cookies.username});
+        if (allPages.length == 0){
+            let currUser = req.cookies.username;
+            return res.render('error.ejs' , {
+                name : 'Error' , 
+                err : 'No Links Found' , 
+                username : currUser , 
+                msg : "Currently no links are associated to your account"
+            })
+        }
+        let allLinks = [];
+        for (let i = 0 ; i < allPages.length ; ++i){
+            allLinks[i] = allPages[i].pageId;
+        }
+        return res.render('userLinks.ejs' , {
+            name : req.cookies.username , 
+            content : allLinks , 
+            username : req.cookies.username
+        });
+    }
+    catch(err){
+        return res.send(err.message);
+    }
 };
