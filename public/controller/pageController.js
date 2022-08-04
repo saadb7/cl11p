@@ -11,10 +11,10 @@ module.exports.getHome = function getHome(req, res) {
 
 module.exports.fetchPage = async function fetchPage(req, res) {
     try {
+        
         let currUser = req.cookies.username;
         if (!currUser) currUser = '';
         let link = req.params.id;
-        req.link = link;
         // console.log(link);
         let page = await pageModel.findOne({
             pageId: link
@@ -24,6 +24,14 @@ module.exports.fetchPage = async function fetchPage(req, res) {
             content = page.pageContent;
         // console.log(content);
         req.content = content;
+        if (req.originalUrl.length > 10 && req.originalUrl.substr(0,10) == "/codemode/"){
+            // console.log('here');
+            return res.render('codemode.ejs' , {
+                name : link , 
+                main : content, 
+                username : currUser
+            });
+        }
         return res.render('any.ejs', {
             name: `${link}`,
             main: content ,
@@ -40,9 +48,15 @@ module.exports.updatePage = async function updatePage(req, res) {
     try {
 
         let link = req.body.currLink.substr(1);
+        if (link.substr(0,8) == 'codemode'){
+            link = link.substr(9);
+            // console.log(link);
+        }
         let page = await pageModel.findOne({ pageId: link });
         if (page) {
             if (req.body.pass == page.password) {
+                // console.log(link);
+                // console.log(req.body.content);
                 let updated = await pageModel.findByIdAndUpdate(page.id, { pageContent: req.body.content , 
                 userName : req.cookies.username});
                 // console.log('updated ', updated);
@@ -75,6 +89,10 @@ module.exports.updatePage = async function updatePage(req, res) {
 module.exports.delPage = async function delPage(req, res) {
     try {
         let link = req.body.currLink.substr(1);
+        if (link.substr(0,8) == 'codemode'){
+            link = link.substr(9);
+            // console.log(link);
+        }
         let page = await pageModel.findOne({ pageId: link });
         if (page) {
             if (req.body.pass == page.password) {

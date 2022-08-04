@@ -57,5 +57,10 @@ pageRouter.route('/:id')
 
 pageRouter.route('/user/:user')
 .get(checkLogin,showAllPages);
+
+pageRouter.route('/codemode/:id')
+.get(fetchPage)
+.patch(updatePage)
+.delete(delPage);
 module.exports = pageRouter;
 

@@ -1,20 +1,29 @@
 <link rel="stylesheet" href="css/any.css">
+<!-- <script src="codemirror/lib/codemirror.js"></script>
+<link rel="stylesheet" href="codemirror/lib/codemirror.css">
+<script src="codemirror/mode/clike/clike.js"></script> -->
 <div class="content">
     <textarea placeholder="Enter your content here" rows="20" name="comment[text]" id="textBox" cols="40" >
         <%= main%>
     </textarea>
+    <!-- <script>
+        var editor = CodeMirror.fromTextArea
+        (document.getElementById('textBox'));
+        
+    </script> -->
     <div class="btns">
         <input type="password" placeholder="Password" class="pass" id="password">
         <button class="btn" id="btn-1"><span></span> Update</button>
         <button class="btn" id="btn-2"><span></span> Delete</button>
+        <a href="/codemode/<%=name%>"><button class="btn" id="btn-3"><span></span>Enter Code Mode</button></a>
     </div>
 </div>
 <script>
     let s = document.getElementById('textBox').value;
-    console.log(s);
+    //console.log(s);
     s = s.trim();
     document.getElementById('textBox').value = s;
-    console.log(s);
+    //console.log(s);
 </script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
@@ -29,12 +38,13 @@
         alert('Enter content');
     }
     else {
-
+        console.log(`${currLink}`);
         let resp = await axios.patch(`${currLink}` , {pass , currLink , content});
         if (resp.data == 'Err'){
             alert("Incorrect Password");
         }
         else {
+            console.log(resp.data);
             alert("Data Updated");
         }
     }
@@ -62,9 +72,10 @@
         }
         else {
             document.getElementById('textBox').value = "";
-            alert("CL!!P deleted");
+            alert("CL!P deleted");
         }
         
     });
+
 </script>
 

@@ -1,0 +1,97 @@
+<link rel="stylesheet" href="css/any.css">
+<script src="codemirror/lib/codemirror.js"></script>
+<link rel="stylesheet" href="codemirror/lib/codemirror.css">
+<link rel="stylesheet" href="codemirror/theme/material.css">
+<script src="codemirror/mode/clike/clike.js"></script>
+<div class="content">
+    <textarea placeholder="Enter your content here" rows="20" name="comment[text]" id="textBox" cols="40" >
+        <%= main%>
+    </textarea>
+    <script>
+        let s = document.getElementById('textBox').value;
+        //console.log(s);
+        s = s.trim();
+        document.getElementById('textBox').value = s;
+        //console.log(s);
+    </script>
+    <script>
+        var editor = CodeMirror.fromTextArea
+        (document.getElementById('textBox') , {
+            mode : "text/x-c++src" ,
+            theme : "material" , 
+            lineNumbers : true
+        });
+        editor.setSize("70%" , "null");
+
+    </script>
+    <div class="btns">
+        <input type="password" placeholder="Password" class="pass" id="password">
+        <button class="btn" id="btn-1"><span></span> Update</button>
+        <button class="btn" id="btn-2"><span></span> Delete</button>
+        <a href="../<%=name%>"><button class="btn" id="btn-3"><span></span> Enter Text Mode</button></a>
+    </div>
+</div>
+<!-- <script>
+    let s = document.getElementById('textBox').value;
+    console.log(s);
+    s = s.trim();
+    document.getElementById('textBox').value = s;
+    console.log(s);
+</script> -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    
+    //update button script
+
+    let btn = document.getElementById('btn-1');
+    btn.addEventListener('click' , async function (e){ 
+    let pass = document.getElementById('password').value;
+    //let content = document.getElementById('textBox').value;
+    let content = editor.getValue();
+    console.log(content);
+    let currLink = window.location.pathname;
+    if(content == ''){
+        alert('Enter content');
+    }
+    else {
+
+        let resp = await axios.patch(`${currLink}` , {pass , currLink , content});
+        if (resp.data == 'Err'){
+            alert("Incorrect Password");
+        }
+        else {
+            alert("CL!P Updated");
+        }
+    }
+    //console.log(window.location.pathname);
+    });
+
+
+    //delete button script
+    let btn2 = document.getElementById('btn-2');
+    btn2.addEventListener('click' , async function(e){
+    let pass = document.getElementById('password').value;
+    let content = document.getElementById('textBox').value;
+    let currLink = window.location.pathname;
+        let res = await axios.delete(`${currLink}` , 
+        {
+            data : {
+                currLink : currLink , 
+                pass : pass , 
+                content : content
+            }
+        });
+
+        if (res.data == 'Err') {
+            alert("Incorrect Password");
+        }
+        else {
+            document.getElementById('textBox').value = "";
+            editor.setValue("");
+            alert("CL!P deleted");
+
+        }
+        
+    });
+</script>
+
