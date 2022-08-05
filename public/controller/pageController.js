@@ -58,7 +58,7 @@ module.exports.updatePage = async function updatePage(req, res) {
                 // console.log(link);
                 // console.log(req.body.content);
                 let updated = await pageModel.findByIdAndUpdate(page.id, { pageContent: req.body.content , 
-                userName : req.cookies.username});
+                username : req.cookies.username});
                 // console.log('updated ', updated);
                 // console.log(req.cookies.username);
                 
