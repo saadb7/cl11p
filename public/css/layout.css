@@ -1,13 +1,13 @@
-* {
+/* * {
     margin: 0px;
     padding: 0px;
 
-}
+} */
 
 body {
 
-    margin: 0px;
-    padding: 0px;
+    /* margin: 0px;
+    padding: 0px; */
     color: white;
 
 
@@ -17,6 +17,7 @@ body {
     width: 85%;
     margin: auto;
     padding: 35px 20px;
+    padding-right: 0px;
     align-items: center;
     justify-content: space-between;
     display: flex;

@@ -1,71 +1,46 @@
-* {
+
+/* * {
     margin: 0px;
     padding: 0px;
-
-}
-.typewriter h1 {
-    font-size: clamp(1.8rem, 3vw, 2.5rem);
-    color: white;
-    font-family: 'MODERN TYPEWRITER', sans-serif;
-    overflow: hidden;
-    border-right: .15em solid orange;
-    white-space: nowrap;
-    margin: 0 auto;
-    letter-spacing: .15em;
-    animation:
-        typing 2s steps(30, end),
-        blink-caret .5s step-end infinite;
-
-}
-
-@keyframes typing {
-    from {
-        width: 0
-    }
-
-    to {
-        width: 100%
-    }
-}
-@keyframes blink-caret {
-
-    from,
-    to {
-        border-color: transparent
-    }
-
-    50% {
-        border-color: #009688
-    }
-
-}
-
-.content {
+ */
+.content {   
     position: absolute;
     width: 100%;
     top: 50%;
-    transform: translateY(-50%);
-    display: flex;
+    transform: translateY(-25%);
+    margin: 0px auto;
     justify-content: center;
     align-items: center;
+    display: flex;
     flex-direction: column;
-
 }
 
-.content div {
-    margin: 10px 0px;
+/* textarea {
+    white-space: normal;
+    outline: none;
+    padding: 10px;
+    width: 70%;
+    font-size: 16px;
+    height: 50vh;
+} */
 
-}
-
-.form {
+.btns {
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
+    margin: 10px;
 
 }
 
-#link {
+.btns button,
+input {
+    font-family: 'Varela Round', sans-serif;
+}
+
+.pass {
+    width: 30%;
     background: transparent;
     position: relative;
     padding: 10px;
@@ -78,36 +53,31 @@
     border: none;
     border-bottom: 2px solid white;
     transition: 0.5s;
-
-
 }
-#link:focus , #link:hover{
+
+.pass:focus,
+.pass:hover {
     border-bottom: 2px solid #009688;
-
 }
 
-#btn {
+.btn {
+    padding: 10px;
+
     color: white;
     text-align: center;
     border: none;
-    margin-top: 10px;
-
-    /* font-weight: bold; */
-    font-size: 2rem;
+    font-size: 1.65rem;
     border-radius: 8px;
     background-color: transparent;
-    /* border: 2px solid #009688; */
     cursor: pointer;
     transition: 0.5s;
     margin-left: 30px;
     min-width: 80px;
     position: relative;
     overflow: hidden;
-    
-    
 }
 
-#btn span{
+.btn span {
     z-index: -1;
     background-color: #009688;
     height: 100%;
@@ -120,20 +90,53 @@
 
 }
 
-#btn:hover span{
+.btn:hover span {
     width: 100%;
 }
 
-#btn:hover{
+.btn:hover {
     border: none;
 
 }
+/* body::before{
+    content: '';
+    position: absolute;
+    height: 10px;
+    width: 100%;
+    z-index: -1;
+    background-color: #34302d;
+} */
+
+/* @media only screen and (max-width: 860px){
+    textarea{
+        height: 40vh;
+    }
+} */
+@media only screen and (max-width : 470px) {
+    textarea {
+        font-size: small;
+    }
+    textarea {
+        height: clamp(20vh , 60vw , 30vh);
+    }
+    .content {
+        top: 60%;
+    }
+}
+/* @media only screen and (max-height: 900) and (min-width: 400) {
+    .content{
+        top: 50%;
+    }
+
+} */
 @media only screen and (max-width : 920px){
     body::before{
         content: '';
         position: absolute;
-        height: 900px;
+        height: 1300px;
+        /* height: fit-content; */
         width: 100%;
+        max-height: 130vh;
         z-index: -1;
         background-color: #34302d;
     }
