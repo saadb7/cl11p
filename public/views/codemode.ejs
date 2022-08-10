@@ -3,7 +3,10 @@
 <link rel="stylesheet" href="codemirror/lib/codemirror.css">
 <link rel="stylesheet" href="codemirror/theme/material.css">
 <script src="codemirror/mode/clike/clike.js"></script>
+<link rel='stylesheet' href='//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.css'>
+<link href='https://fonts.googleapis.com/css?family=Fira Code' rel='stylesheet'>
 <div class="content">
+    <p>CodeMode</p>
     <textarea placeholder="Enter your content here" rows="20" name="comment[text]" id="textBox" cols="40" >
         <%= main%>
     </textarea>
@@ -25,7 +28,7 @@
             matchBrackets : true , 
             lineWrapping : true 
         });
-        editor.setSize("70%" , "null");
+        editor.setSize("65%" , "50vh");
 
     </script>
     <div class="btns">
@@ -98,4 +101,13 @@
         
     });
 </script>
+<style>
+    .content p{
+        font-family: 'Fira Code' , 'Varela Round';
+    }
+    .CodeMirror{
+        font-family: 'Fira Code' , 'Varela Round';
+        font-size: 14px;
+    }
+</style>
 
