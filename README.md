@@ -1,10 +1,10 @@
-# cl1p
-## [Live Link -](alive-gray-bluefish.cyclic.app/)
+# cl1p 
+## [Live Link](alive-gray-bluefish.cyclic.app/)
 
 ## Description
-###Instantly share text content through user-generated links across multiple platforms. Can be used to shorten URL's or as an online clipboard.
+### Instantly share text content through user-generated links across multiple platforms. Can be used to shorten URL's or as an online clipboard.
 
-##Steps to follow
+## Steps to follow
 - Upon landing on the home page , enter the name you want to use as a shorthand in the text box. 
 - Follow up by clicking the Go Button. This will redirect the user to the '/${shorthand}' page. 
 - Enter the text that you want to CL!!P in the text area (Use password if neccessary). 
