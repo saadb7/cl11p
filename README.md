@@ -1,5 +1,5 @@
 # cl1p 
-## [Live Link](alive-gray-bluefish.cyclic.app/)
+## [Live Link](https://alive-gray-bluefish.cyclic.app/)
 
 ## Description
 ### Instantly share text content through user-generated links across multiple platforms. Can be used to shorten URL's or as an online clipboard.
